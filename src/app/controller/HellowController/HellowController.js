@@ -1,6 +1,6 @@
 class HellowController {
     async hellow(req, res) {
-        return res.json("Hellow world!");
+        return res.json({ message: 'hello world!' });
     }
 }
 
