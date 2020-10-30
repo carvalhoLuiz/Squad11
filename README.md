@@ -1,7 +1,7 @@
 <h1 align="center">🍊 Programa de Formação à Distância FCamara 🍊<br><br>🔸 2º Semestre de 2020 🔸</h1>
 <br<br>
 <h2 align="left">📋 Sobre o Projeto</h2>
-<h3 align="left">Sistema de Solução FIFO</h3>
+<h3 align="left">Objetivo</h3>
 <p align="justify">O objetivo deste projeto visa sanar e solucionar os problemas relacionados a organização do momento de happy hour dos contribuintes
 da FCamara, de modo que todos consigam sem exceção, seu momento de descontração e possam aproveitar do que a sala de jogos tem a oferecer.</p>
 <br<br>
