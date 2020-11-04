@@ -17,7 +17,10 @@ Mas por algo mais descontraído, não é muito organizado. Às vezes demora para
 </p>
 <br><br>
 <h2 align="left">🚀 Features</h2><br>
-
+ ❌ - Fila de jogos <br>
+ ❌ - Notificação de partida <br>
+ ❌ - Convite de jogo <br>
+ ❌ - Histórico de partida <br>
 <br><br>
 <h1 align="left">🛠️ Desenvolvido com</h1>
 <p align="justify">
