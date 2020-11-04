@@ -22,8 +22,8 @@ Mas por algo mais descontraído, não é muito organizado. Às vezes demora para
 <h1 align="left">🛠️ Desenvolvido com</h1>
 <p align="justify">
   <a href="https://nodejs.org/en/"> <img src="https://img.shields.io/badge/Nodejs-V15.0.1-0BB5FF?labelColor=FF7F00"/></a> - Core Back-End <br>
-  <a href="https://reactjs.org/"><img src="https://img.shields.io/badge/Reactjs-V1.0-0BB5FF?labelColor=FF7F00"/></a> - Biblioteca Front-End <br>
-  <a href="https://www.npmjs.com/package/axios"><img src="https://img.shields.io/badge/Axios-V1.0-0BB5FF?labelColor=FF7F00"/></a> - Cliente HTTP baseado em promisses para o navegador e node.js<br>
+  <a href="https://reactjs.org/"><img src="https://img.shields.io/badge/Reactjs-V17.0.1-0BB5FF?labelColor=FF7F00"/></a> - Biblioteca Front-End <br>
+  <a href="https://www.npmjs.com/package/axios"><img src="https://img.shields.io/badge/Axios-V0.21.0-0BB5FF?labelColor=FF7F00"/></a> - Cliente HTTP baseado em promisses para o navegador e node.js<br>
   <a href="https://eslint.org/"><img src="https://img.shields.io/badge/Eslint-V2.1.13-0BB5FF?labelColor=FF7F00"/></a> - Padronizador de código para Javascript<br>
   <a href="https://www.npmjs.com/"><img src="https://img.shields.io/badge/Npm-V7.0.3-0BB5FF?labelColor=FF7F00"/></a> - Gerenciador de Depêndicias<br>
 </p>
