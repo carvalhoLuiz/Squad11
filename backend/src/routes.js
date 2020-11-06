@@ -1,9 +1,9 @@
 import { Router } from 'express';
 
-import HellowController from './app/controller/HellowController/HellowController';
+import UsuarioController from './app/controller/UsuarioController/UsuarioController';
 
 const routes = new Router();
 
-routes.get('/', HellowController.hellow);
+routes.post('/registrar', UsuarioController.store);
 
 export default routes;
