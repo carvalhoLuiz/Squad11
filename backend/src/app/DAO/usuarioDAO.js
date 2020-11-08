@@ -10,6 +10,18 @@ class UsuarioDAO {
       return { menssagem: `Houve um erro! ${error}` };
     }
   }
+
+  async search(email) {
+    try {
+      this.res = await knexDB('usuario')
+        .select('*')
+        .where('email', email)
+        .first();
+      return this.res;
+    } catch (error) {
+      return { mensagem: `Houve um erro! ${error}` };
+    }
+  }
 }
 
 export default UsuarioDAO;
