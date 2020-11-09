@@ -11,7 +11,7 @@ class SessionController {
       const { email, senha } = req.body;
       const lineUser = await usuario.search(email);
       if (!(await bcrypt.compare(senha, lineUser.senha))) {
-        return res.status(400).json({ menssagem: `Senha inválida` });
+        return res.status(400).json({ mensagem: `Senha inválida` });
       }
 
       return res.status(200).json({
