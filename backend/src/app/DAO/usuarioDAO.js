@@ -1,4 +1,4 @@
-import knexDB from '../database/knex';
+import knexDB from '../../database/knex';
 
 class UsuarioDAO {
   async create(nome, email, senha) {
@@ -17,7 +17,7 @@ class UsuarioDAO {
         .select('*')
         .where('email', email)
         .first();
-      return this.res;
+      return { error: false, mensagem: this.res };
     } catch (error) {
       return { error: true, mensagem: error };
     }

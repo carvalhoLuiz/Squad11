@@ -16,7 +16,7 @@ class Usuario {
 
       return res.status(200).json(register.mensagem);
     } catch (error) {
-      return res.status(400).json({ mensagem: `Houve um erro: ${error}` });
+      return res.status(400).json(error);
     }
   }
 }
