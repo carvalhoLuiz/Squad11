@@ -5,9 +5,9 @@ class UsuarioDAO {
     try {
       this.res = await knexDB('usuario').insert({ nome, email, senha });
 
-      return { mensagem: `Cadastro realizado com sucesso` };
+      return { error: false, mensagem: `Cadastro realizado com sucesso` };
     } catch (error) {
-      return { menssagem: `Houve um erro! ${error}` };
+      return { error: true, mensagem: error };
     }
   }
 
@@ -19,7 +19,7 @@ class UsuarioDAO {
         .first();
       return this.res;
     } catch (error) {
-      return { mensagem: `Houve um erro! ${error}` };
+      return { error: true, mensagem: error };
     }
   }
 }
