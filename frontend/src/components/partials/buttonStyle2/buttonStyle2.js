@@ -19,6 +19,16 @@ const Style = styled.div`
                 ? '#4619E5'
                 : '#fff'};
     }
+
+    h6 {
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 1.5em;
+    }
+
+    @media only screen and (max-width: 500px) {
+        font-size: 16px;
+    }
 `;
 
 export const ButtonStyle2 = (props) => {
