@@ -10,16 +10,16 @@ window.onload = function getItems() {
 };
 
 export default function Input(props) {
-    let checkInput2;
+    let checkInput;
 
     const hiddenLabelClick = (nInput) => {
         label[nInput].classList.add('disappear');
         document.addEventListener('click', (event) => {
             const isClickInside = input[nInput].contains(event.target);
 
-            if (!isClickInside && !checkInput2) {
+            if (!isClickInside && !checkInput) {
                 label[nInput].classList.remove('disappear');
-                checkInput2 = false;
+                checkInput = false;
             }
         });
     };
@@ -27,9 +27,9 @@ export default function Input(props) {
     const hiddenLabelChange = (a, func) => {
         let error;
         if (a.target.value) {
-            checkInput2 = true;
+            checkInput = true;
         } else {
-            checkInput2 = false;
+            checkInput = false;
         }
         if (func) {
             error = func(a);
