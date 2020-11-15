@@ -26,7 +26,7 @@ module.exports = {
         'react/prop-types': 'off',
         'react/destructuring-assignment': 'off',
         'react/state-in-constructor': 'off',
-        'prettier/prettier': 'error',
+        'prettier/prettier': ['error', { endOfLine: 'auto' }],
         'react/jsx-filename-extension': [
             'warn',
             { extensions: ['.jsx', '.js'] },
