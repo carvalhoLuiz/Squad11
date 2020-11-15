@@ -10,9 +10,13 @@ class Usuario {
       const senha_hash = await bcrypt.hash(senha, 7);
       const register = await usuario.create(nome, email, senha_hash);
 
-      return res.status(200).json(register);
+      if (register.error === true) {
+        throw register.mensagem;
+      }
+
+      return res.status(200).json(register.mensagem);
     } catch (error) {
-      return res.status(400).json({ menssagem: `Houve um erro: ${error}` });
+      return res.status(400).json(error);
     }
   }
 }
