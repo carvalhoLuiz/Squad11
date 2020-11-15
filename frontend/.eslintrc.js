@@ -20,7 +20,6 @@ module.exports = {
     plugins: ['react', 'prettier'],
 
     rules: {
-        'jsx-a11y/label-has-associated-control': 'off',
         'no-unused-vars': 'off',
         'react/prefer-stateless-function': 'off',
         'react/prop-types': 'off',
