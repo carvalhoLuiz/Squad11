@@ -1,42 +1,56 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './style.css';
 
-window.onload = function hiddenLabel() {
-    const input = document.querySelector('.input');
-    const label = document.querySelector('.label');
-    let disappear = true;
-    let checkInput;
+let input;
+let label;
 
-    input.addEventListener('click', (x) => {
-        label.classList.add('disappear');
-    });
-
-    input.addEventListener('change', (a) => {
-        checkInput = a.target.value;
-        if (checkInput) {
-            label.classList.add('disappear');
-            disappear = true;
-        }
-    });
-    document.addEventListener('click', (event) => {
-        const isClickInside = input.contains(event.target);
-        if (!checkInput) {
-            disappear = false;
-        }
-
-        if (!isClickInside) {
-            if (disappear === false) {
-                label.classList.remove('disappear');
-            }
-        }
-    });
+window.onload = function getItems() {
+    input = document.getElementsByClassName('input');
+    label = document.getElementsByClassName('label');
 };
 
 export default function Input(props) {
+    let checkInput;
+
+    const hiddenLabelClick = (nInput) => {
+        label[nInput].classList.add('disappear');
+        document.addEventListener('click', (event) => {
+            const isClickInside = input[nInput].contains(event.target);
+
+            if (!isClickInside && !checkInput) {
+                label[nInput].classList.remove('disappear');
+                checkInput = false;
+            }
+        });
+    };
+
+    const hiddenLabelChange = (a, func) => {
+        let error;
+        if (a.target.value) {
+            checkInput = true;
+        } else {
+            checkInput = false;
+        }
+        if (func) {
+            error = func(a);
+        }
+        if (error === true) {
+            a.target.classList.add('errorTrue');
+        } else {
+            a.target.classList.remove('errorTrue');
+        }
+    };
+
     return (
         <div>
             <label className="label">{props.label}</label>
-            <input className="input" type={props.type} required="required" />
+            <input
+                className="input"
+                type={props.type}
+                required="required"
+                onChange={(a) => hiddenLabelChange(a, props.func, props.error)}
+                onClick={() => hiddenLabelClick(props.input)}
+            />
             <span className="span">{props.placeHolder}</span>
         </div>
     );
