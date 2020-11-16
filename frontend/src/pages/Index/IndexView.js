@@ -21,6 +21,7 @@ export const IndexView = () => {
                     <ButtonStyle1 primary active texto="Cadastrar" />
                 </Link>
                 <br />
+                <br />
                 <Link to="/login">
                     <ButtonStyle1 primary={false} texto="Entrar" />
                 </Link>
