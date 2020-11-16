@@ -15,11 +15,16 @@ export default function Input(props) {
     const hiddenLabelClick = (nInput) => {
         label[nInput].classList.add('disappear');
         document.addEventListener('click', (event) => {
-            const isClickInside = input[nInput].contains(event.target);
+            let isClickInside;
+            if (input[nInput]) {
+                isClickInside = input[nInput].contains(event.target);
+            }
 
             if (!isClickInside && !checkInput) {
-                label[nInput].classList.remove('disappear');
-                checkInput = false;
+                if (input[nInput]) {
+                    label[nInput].classList.remove('disappear');
+                    checkInput = false;
+                }
             }
         });
     };
