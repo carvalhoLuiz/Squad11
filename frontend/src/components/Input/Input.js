@@ -21,8 +21,10 @@ export default function Input(props) {
             }
 
             if (!isClickInside && !checkInput) {
-                label[nInput].classList.remove('disappear');
-                checkInput = false;
+                if (input[nInput]) {
+                    label[nInput].classList.remove('disappear');
+                    checkInput = false;
+                }
             }
         });
     };
