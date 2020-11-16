@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './style.css';
 
 let input;
@@ -15,7 +15,10 @@ export default function Input(props) {
     const hiddenLabelClick = (nInput) => {
         label[nInput].classList.add('disappear');
         document.addEventListener('click', (event) => {
-            const isClickInside = input[nInput].contains(event.target);
+            let isClickInside;
+            if (input[nInput]) {
+                isClickInside = input[nInput].contains(event.target);
+            }
 
             if (!isClickInside && !checkInput) {
                 label[nInput].classList.remove('disappear');

@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 @media (min-width: 450px) {
     .input{
+        font-family: 'Roboto', sans-serif;
         font-size: 24px;
         border: 2px solid #6236FF;
         border-radius: 6px;
@@ -23,14 +25,22 @@
 }
 @media (min-width: 449px) {
     .input:focus + span,input:valid + span{
-        top:-45px;
-        right: 37vw;
+        color:black;
+        width:160px;
+        font-weight: 700;
+        font-size:18px;
+        width:180px;
+        top:-95px;
+        right: 0vw;
     }
     }
     
 @media (max-width: 449px) {
     .input:focus + span,input:valid + span{
-        top:-80px;
+        color:black;
+        font-weight: 700;
+        font-size:18px;
+        top:-90px;
         right: 0px;
     }
     }
@@ -40,11 +50,15 @@
 
 @media (min-width: 450px) {
 .span{
-    font-size: 24px;
+    font-family: 'Roboto', sans-serif;
+    color: #C9C9C9;
+    display:block;
+    font-size: 16px;
     padding: 0;
     position: relative;
-    top: 1px;
-    right: 37vw;
+    top: -40px;
+    width:160px;
+    right: -1vw;
     transform: translateY(-50%);
     transition:0.2s;
     background-color: white;
@@ -53,9 +67,11 @@
 }
 @media (max-width: 449px) {
     .span{
-        display:block;
+        font-family: 'Roboto', sans-serif;
+        color: #C9C9C9;
+        display:inline-block;
         width:160px;
-        font-size: 24px;
+        font-size: 16px;
         position: relative;
         top: -45px;
         right: -5vw;
@@ -67,9 +83,12 @@
     }
 
 .label{
-    font-size: 24px;
+    font-family: 'Roboto', sans-serif;
+    color:#2F2E2E;
+    font-weight: 700;
+    font-size: 18px;
     position:absolute;
-    margin-left:25px;
+    margin-left:2px;
     margin-top:-20px;
 }
 
