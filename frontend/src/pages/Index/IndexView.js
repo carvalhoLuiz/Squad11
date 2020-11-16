@@ -14,11 +14,7 @@ export const IndexView = () => {
     return (
         <Template>
             <Container>
-                <img
-                    src={Logo}
-                    alt="teste"
-                    style={{ alignSelf: 'flex-start' }}
-                />
+                <img src={Logo} alt="logo" />
                 <p>Confira os benefícios da fila virtual para jogar</p>
                 <div className="CarrosselArea">Area do Carrossel</div>
                 <Link to="/cadastro">
