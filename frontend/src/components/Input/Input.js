@@ -36,9 +36,6 @@ export default function Input(props) {
         } else {
             checkInput = false;
         }
-        if (func) {
-            error = func(a);
-        }
         if (error === true) {
             a.target.classList.add('errorTrue');
         } else {
@@ -53,7 +50,10 @@ export default function Input(props) {
                 className="input"
                 type={props.type}
                 required="required"
-                onChange={(a) => hiddenLabelChange(a, props.func, props.error)}
+                onChange={(a) => {
+                    hiddenLabelChange(a, props.error);
+                    if (props.func) props.func(a);
+                }}
                 onClick={() => hiddenLabelClick(props.input)}
             />
             <span className="span">{props.placeHolder}</span>

@@ -1,18 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Input from '../../components/Input/Input';
 import { Container } from './StyledLoginView';
 import Logo from '../../assets/icons/Logo.svg';
+import api from '../../services/api';
 
 import { ButtonStyle1 } from '../../components/partials/buttonStyle1/buttonStyle1';
 
 export default function Login() {
-    let error = false;
-    const teste = (x) => {
-        const testek = x.target.value;
-
-        error = testek === 'luiz';
-        return error;
+    const [email, setEmail] = useState('');
+    const [senha, setSenha] = useState('');
+    const handleEmail = (a) => {
+        setEmail(a.target.value);
+    };
+    const handleSenha = (a) => {
+        setSenha(a.target.value);
+    };
+    const logar = async () => {
+        const data = {
+            email,
+            senha,
+        };
+        await api.post('/login', data).then((response) => {
+            const { user, token } = response.data;
+            localStorage.setItem('user', user);
+            localStorage.setItem('token', token);
+            console.log(user);
+        });
     };
     return (
         <Container>
@@ -22,7 +36,7 @@ export default function Login() {
                 label="Email"
                 placeHolder="Digite seu email"
                 input={0}
-                func={teste}
+                func={handleEmail}
                 className="inputs"
             />
             <div className="space" />
@@ -31,6 +45,7 @@ export default function Login() {
                 placeHolder="Digite sua senha"
                 type="password"
                 input={1}
+                func={handleSenha}
                 className="inputs"
             />
             <br />
@@ -38,14 +53,13 @@ export default function Login() {
                 Esqueci a Senha
             </Link>
             <div className="btn">
-                <Link to="/">
-                    <ButtonStyle1
-                        className="botao"
-                        primary
-                        active
-                        texto="Entrar"
-                    />
-                </Link>
+                <ButtonStyle1
+                    className="botao"
+                    primary
+                    active
+                    texto="Entrar"
+                    func={logar}
+                />
             </div>
         </Container>
     );
