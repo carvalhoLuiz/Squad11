@@ -10,23 +10,31 @@ import { ButtonStyle1 } from '../../components/partials/buttonStyle1/buttonStyle
 export default function Login() {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
+
     const handleEmail = (a) => {
         setEmail(a.target.value);
     };
+
     const handleSenha = (a) => {
         setSenha(a.target.value);
     };
+
     const logar = async () => {
         const data = {
             email,
             senha,
         };
-        await api.post('/login', data).then((response) => {
-            const { user, token } = response.data;
-            localStorage.setItem('user', user);
-            localStorage.setItem('token', token);
-            console.log(user);
-        });
+
+        await api
+            .post('/login', data)
+            .then((response) => {
+                const { nome, token } = response.data;
+                localStorage.setItem('nome', nome);
+                localStorage.setItem('token', token);
+            })
+            .catch((response) => {
+                console.log(response);
+            });
     };
     return (
         <Container>

@@ -25,11 +25,9 @@ class SessionController {
       }
 
       const { id_usuario, nome } = lineUser.mensagem;
-
+      console.log(nome);
       return res.status(200).json({
-        user: {
-          nome,
-        },
+        nome,
         token: JWT.sign({ email, id_usuario }, authConfig.secret, {
           expiresIn: authConfig.expiresIn,
         }),

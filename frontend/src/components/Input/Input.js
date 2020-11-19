@@ -7,6 +7,11 @@ let label;
 window.onload = function getItems() {
     input = document.getElementsByClassName('input');
     label = document.getElementsByClassName('label');
+    document.addEventListener('keydown', (e) => {
+        if (e.keyCode === 9) {
+            e.preventDefault();
+        }
+    });
 };
 
 export default function Input(props) {
