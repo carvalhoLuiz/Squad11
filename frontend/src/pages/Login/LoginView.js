@@ -25,16 +25,11 @@ export default function Login() {
             senha,
         };
 
-        await api
-            .post('/login', data)
-            .then((response) => {
-                const { nome, token } = response.data;
-                localStorage.setItem('nome', nome);
-                localStorage.setItem('token', token);
-            })
-            .catch((response) => {
-                console.log(response);
-            });
+        await api.post('/login', data).then((response) => {
+            const { nome, token } = response.data;
+            localStorage.setItem('nome', nome);
+            localStorage.setItem('token', token);
+        });
     };
     return (
         <Container>
