@@ -25,7 +25,7 @@ class SessionController {
       }
 
       const { id_usuario, nome } = lineUser.mensagem;
-      console.log(nome);
+
       return res.status(200).json({
         nome,
         token: JWT.sign({ email, id_usuario }, authConfig.secret, {
@@ -33,7 +33,7 @@ class SessionController {
         }),
       });
     } catch (error) {
-      return res.status(400).json({ Error: error });
+      return res.status(401).json({ Error: error });
     }
   }
 }
