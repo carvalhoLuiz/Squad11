@@ -5,19 +5,27 @@ const Style = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    text-transform: uppercase;
-    width: 28vw;
+    width: 100%;
     height: 64px;
     border-radius: 10px;
-    background: ${(props) => (props.primary === true ? '#6236FF' : '#fff')};
-    color: ${(props) => (props.primary === true ? '#ffe261' : '#ccc')};
-    border: ${(props) => (props.primary === true ? '0px' : '1px solid #CCC')};
+    background: ${(props) =>
+        props.primary === true && props.active === true ? '#6236FF' : '#fff'};
+    color: ${(props) =>
+        props.primary === true && props.active === true ? '#ffe261' : '#ccc'};
+    border: ${(props) =>
+        props.primary === true && props.active === true
+            ? '0px'
+            : '1px solid #CCC'};
 
     :hover {
         background: ${(props) =>
-            props.primary === true && props.active === true
+            props.primary === true &&
+            props.active === true &&
+            props.active === true
                 ? '#4619E5'
                 : '#fff'};
+        cursor: ${(props) =>
+            props.active === false ? 'not-allowed' : 'pointer'};
     }
 
     h6 {
@@ -35,7 +43,7 @@ export const ButtonStyle2 = (props) => {
     return (
         <>
             <Style primary={props.primary} active={props.active}>
-                {props.texto}
+                <h6>{props.texto}</h6>
             </Style>
         </>
     );

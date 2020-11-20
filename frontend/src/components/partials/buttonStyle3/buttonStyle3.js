@@ -23,11 +23,29 @@ const Style = styled.div`
     h6 {
         font-weight: 600;
         text-transform: uppercase;
-        font-size: 1.5em;
+        font-size: 24px;
+        font-family: 'Montserrat';
+    }
+
+    @media (min-width: 1170px) {
+        h6 {
+            font-size: 14px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        h6 {
+            font-size: 18px;
+        }
+    }
+    @media (max-width: 418px) {
+        h6 {
+            font-size: 10px;
+        }
     }
 `;
 
-export const ButtonStyle1 = (props) => {
+export const ButtonStyle3 = (props) => {
     return (
         <>
             <Style primary={props.primary} active={props.active}>

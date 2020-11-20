@@ -6,7 +6,7 @@ export const Container = styled.div`
     align-items: center;
     flex-direction: column;
     margin: auto;
-    max-width: 75vw;
+    max-width: 75%;
 
     img {
         margin-bottom: 15vh;
@@ -26,6 +26,8 @@ export const Container = styled.div`
     .btn {
         margin-top: 4vh;
         text-decoration: none;
+        width: 28vw;
+        padding: 15px;
     }
 
     a {
@@ -46,4 +48,12 @@ export const Container = styled.div`
             margin-right: 0vw;
         }
     }
+`;
+
+export const FormContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 18%;
 `;
