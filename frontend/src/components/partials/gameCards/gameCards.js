@@ -37,6 +37,10 @@ export const InfoArea = styled.div`
     }
     @media (min-width: 768px) {
         width: 45%;
+
+        h6 {
+            align-self: flex-start;
+        }
     }
 
     @media (max-width: 768px) {
@@ -85,10 +89,12 @@ export const TxtArea = styled.div`
 export const DescArea = styled.div`
     display: flex;
     flex-direction: row;
+    margin-top: -25px;
     justify-content: space-evenly;
 
     @media (min-width: 768px) {
         flex-direction: column;
+        margin-top: 25px;
     }
 `;
 
@@ -98,7 +104,9 @@ export const BtnArea = styled.div`
     align-self: flex-start;
 
     @media (max-width: 768px) {
+        width: 100%;
         align-self: center;
+        margin-top: 60px;
     }
 `;
 

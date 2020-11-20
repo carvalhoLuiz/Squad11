@@ -25,23 +25,7 @@ const Style = styled.div`
         text-transform: uppercase;
         font-size: 24px;
         font-family: 'Montserrat';
-    }
-
-    @media (min-width: 1170px) {
-        h6 {
-            font-size: 14px;
-        }
-    }
-
-    @media (max-width: 768px) {
-        h6 {
-            font-size: 18px;
-        }
-    }
-    @media (max-width: 418px) {
-        h6 {
-            font-size: 10px;
-        }
+        align-self: center;
     }
 `;
 
