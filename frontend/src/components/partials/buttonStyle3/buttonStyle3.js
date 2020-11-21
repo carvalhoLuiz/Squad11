@@ -25,7 +25,7 @@ const Style = styled.div`
         text-transform: uppercase;
         font-size: 24px;
         font-family: 'Montserrat';
-        align-self: center;
+        margin: auto;
     }
 `;
 

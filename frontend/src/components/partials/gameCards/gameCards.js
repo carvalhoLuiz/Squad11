@@ -28,17 +28,18 @@ export const InfoArea = styled.div`
     flex-direction: column;
     margin-left: 2%;
 
-    h6 {
+    .Titulo {
         font-family: 'Montserrat';
         font-style: normal;
         font-weight: 600;
         font-size: 24px;
         align-self: center;
+        margin-top: 25px;
     }
     @media (min-width: 768px) {
         width: 45%;
 
-        h6 {
+        .Titulo {
             align-self: flex-start;
         }
     }
@@ -99,6 +100,7 @@ export const DescArea = styled.div`
 `;
 
 export const BtnArea = styled.div`
+    display: flex;
     margin-top: 85px;
     width: 45%;
     align-self: flex-start;
@@ -106,7 +108,9 @@ export const BtnArea = styled.div`
     @media (max-width: 768px) {
         width: 100%;
         align-self: center;
-        margin-top: 60px;
+        margin-top: 30px;
+        margin-bottom: 10px;
+        margin-right: 5px;
     }
 `;
 
@@ -118,7 +122,7 @@ export const GameCard = (props) => {
                     <img src={props.image} alt="mesa" />
                 </CardImg>
                 <InfoArea>
-                    <h6>{props.name}</h6>
+                    <h6 className="Titulo">{props.name}</h6>
                     <DescArea>
                         <TxtArea>
                             <img src={Ppl} alt="icon" />
