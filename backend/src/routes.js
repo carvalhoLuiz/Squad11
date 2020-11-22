@@ -2,7 +2,7 @@ import { Router } from 'express';
 
 import UsuarioController from './app/controller/UsuarioController/UsuarioController';
 import SessionController from './app/controller/UsuarioController/SessionController';
-import Hellow from './app/controller/HellowController/HellowController';
+import FilaController from './app/controller/FilaController/FilaController';
 
 import authMiddleware from './app/middleware/auth';
 
@@ -13,6 +13,6 @@ routes.post('/login', SessionController.store);
 
 routes.use(authMiddleware);
 
-routes.post('/hellow', Hellow.hellow);
+routes.post('/fila', FilaController.store);
 
 export default routes;
