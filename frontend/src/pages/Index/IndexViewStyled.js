@@ -42,6 +42,12 @@ export const Container = styled.div`
         margin-bottom: 32px;
     }
 
+    .btnArea {
+        width: 28vw;
+
+        padding: 15px;
+    }
+
     a {
         text-decoration: none;
     }

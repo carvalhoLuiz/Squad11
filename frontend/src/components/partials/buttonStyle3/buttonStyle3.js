@@ -23,20 +23,16 @@ const Style = styled.div`
     h6 {
         font-weight: 600;
         text-transform: uppercase;
-        font-size: 1.5em;
+        font-size: 24px;
+        font-family: 'Montserrat';
+        margin: auto;
     }
 `;
 
-export const ButtonStyle1 = (props) => {
+export const ButtonStyle3 = (props) => {
     return (
         <>
-            <Style
-                primary={props.primary}
-                active={props.active}
-                onClick={() => {
-                    if (props.func) props.func();
-                }}
-            >
+            <Style primary={props.primary} active={props.active}>
                 <h6>{props.texto}</h6>
             </Style>
         </>

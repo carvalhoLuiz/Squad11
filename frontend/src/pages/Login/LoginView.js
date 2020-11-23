@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Input from '../../components/Input/Input';
-import { Container } from './StyledLoginView';
+import { Container, FormContainer } from './StyledLoginView';
 import Logo from '../../assets/icons/Logo.svg';
 import api from '../../services/api';
 
@@ -34,7 +34,6 @@ export default function Login() {
     return (
         <Container>
             <img src={Logo} alt="Logo" />
-
             <Input
                 label="Email"
                 placeHolder="Digite seu email"
@@ -51,6 +50,7 @@ export default function Login() {
                 func={handleSenha}
                 className="inputs"
             />
+
             <br />
             <Link className="passForgot" to="/">
                 Esqueci a Senha

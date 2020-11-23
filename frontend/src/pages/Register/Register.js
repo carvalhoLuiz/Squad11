@@ -68,7 +68,19 @@ export default function Register() {
                         placeHolder="Digite sua senha "
                         input={2}
                     />
-                    <ButtonStyle1 primary active texto="Concluir cadastro" />
+                    <div
+                        style={{
+                            width: '28vw',
+
+                            padding: '15px',
+                        }}
+                    >
+                        <ButtonStyle1
+                            primary
+                            active
+                            texto="Concluir cadastro"
+                        />
+                    </div>
                 </form>
             </div>
         </div>
