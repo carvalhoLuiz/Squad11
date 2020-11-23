@@ -54,11 +54,36 @@ class filaDAO {
         return x.id_usuario;
       });
       res = await knexDB('usuario')
-        .select('nome')
+        .select('id_usuario', 'nome')
         .whereNotIn('id_usuario', blackList)
-        .andWhereNot('usuario.id_usuario', '=', id_jogador);
+        .andWhereNot('id_usuario', '=', id_jogador);
 
       return res;
+    } catch (error) {
+      return error;
+    }
+  }
+
+  async indexQueue(id_jogo) {
+    try {
+      const queue = await knexDB('fila')
+        .where('finalizar', '=', '0')
+        .andWhere('id_jogo', '=', id_jogo);
+
+      return queue;
+    } catch (error) {
+      return error;
+    }
+  }
+
+  async delete(id_jogo, id_jogador) {
+    try {
+      await knexDB('fila')
+        .where('id_jogador', '=', id_jogador)
+        .andWhere('finalizar', '=', '0')
+        .andWhere('id_jogo', '=', id_jogo)
+        .del();
+      return 'deletado com sucesso';
     } catch (error) {
       return error;
     }

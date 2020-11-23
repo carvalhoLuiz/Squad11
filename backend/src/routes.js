@@ -14,5 +14,7 @@ routes.post('/login', SessionController.store);
 routes.use(authMiddleware);
 
 routes.post('/fila', FilaController.store);
+routes.get('/fila', FilaController.index);
+routes.get('/filaLivre', FilaController.indexAvailable);
 
 export default routes;
