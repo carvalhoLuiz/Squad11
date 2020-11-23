@@ -74,7 +74,6 @@ export const TxtArea = styled.div`
         margin-left: 1vw;
 
         @media (max-width: 768px) {
-            margin-right: 25px;
         }
     }
 
@@ -96,7 +95,7 @@ export const DescArea = styled.div`
     display: flex;
     flex-direction: row;
     margin-top: -25px;
-    justify-content: flex-start;
+    justify-content: space-evenly;
 
     @media (min-width: 768px) {
         flex-direction: column;
@@ -133,7 +132,7 @@ export const GameCard = (props) => {
                             <img src={Ppl} alt="icon" />
                             <p>{props.fila}</p>
                         </TxtArea>
-                        <TxtArea>
+                        <TxtArea className="txtA2">
                             <img src={Timer} alt="icon" />
                             <p className="minutos">{props.duracao}</p>
                         </TxtArea>
