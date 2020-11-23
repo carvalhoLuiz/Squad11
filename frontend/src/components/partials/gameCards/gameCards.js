@@ -35,6 +35,7 @@ export const InfoArea = styled.div`
         font-size: 24px;
         align-self: center;
         margin-top: 25px;
+        align-self: flex-start;
     }
     @media (min-width: 768px) {
         width: 45%;
@@ -71,6 +72,10 @@ export const TxtArea = styled.div`
         font-style: normal;
         font-size: 18px;
         margin-left: 1vw;
+
+        @media (max-width: 768px) {
+            margin-right: 25px;
+        }
     }
 
     .minutos {
@@ -91,7 +96,7 @@ export const DescArea = styled.div`
     display: flex;
     flex-direction: row;
     margin-top: -25px;
-    justify-content: space-evenly;
+    justify-content: flex-start;
 
     @media (min-width: 768px) {
         flex-direction: column;
