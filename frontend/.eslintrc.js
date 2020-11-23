@@ -20,12 +20,13 @@ module.exports = {
     plugins: ['react', 'prettier'],
 
     rules: {
+        'jsx-a11y/label-has-associated-control': 'off',
         'no-unused-vars': 'off',
         'react/prefer-stateless-function': 'off',
         'react/prop-types': 'off',
         'react/destructuring-assignment': 'off',
         'react/state-in-constructor': 'off',
-        'prettier/prettier': 'error',
+        'prettier/prettier': ['error', { endOfLine: 'auto' }],
         'react/jsx-filename-extension': [
             'warn',
             { extensions: ['.jsx', '.js'] },
