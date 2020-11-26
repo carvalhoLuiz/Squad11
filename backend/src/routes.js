@@ -16,5 +16,7 @@ routes.use(authMiddleware);
 routes.post('/fila', FilaController.store);
 routes.get('/fila', FilaController.index);
 routes.get('/filaLivre', FilaController.indexAvailable);
-
+routes.delete('/fila', FilaController.delete);
+routes.put('/filas', FilaController.startDate);
+routes.put('/fila', FilaController.finishMatch);
 export default routes;

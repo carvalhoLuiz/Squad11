@@ -46,7 +46,7 @@ class FilaController {
     }
   }
 
-  async update(req, res) {
+  async delete(req, res) {
     const id_jogo = req.query.id;
     const id_jogador = req.userId;
     try {
@@ -55,6 +55,28 @@ class FilaController {
       return res.status(200).json({ mensagem: 'Você saiu da fila' });
     } catch (error) {
       return res.status(400).json({ mensagem: error });
+    }
+  }
+
+  async startDate(req, res) {
+    const id_jogo = req.query.id;
+    try {
+      const startDate = await fila.startDate(id_jogo);
+
+      return res.status(200).json(startDate);
+    } catch (error) {
+      return res.status(400).json({ mensagem: error });
+    }
+  }
+
+  async finishMatch(req, res) {
+    const id_jogo = req.query.id;
+    try {
+      const finishMatch = await fila.finish(id_jogo);
+
+      return res.status(200).json({ finishMatch });
+    } catch (error) {
+      return res.status(400).json(error);
     }
   }
 }
