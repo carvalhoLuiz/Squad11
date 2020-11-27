@@ -22,4 +22,8 @@ routes.put('/filas', FilaController.startDate);
 routes.put('/fila', FilaController.finishMatch);
 
 routes.post('/jogo', JogoController.store);
+routes.put('/jogo', JogoController.update);
+routes.delete('/jogo', JogoController.delete);
+routes.get('/jogo', JogoController.index);
+
 export default routes;
