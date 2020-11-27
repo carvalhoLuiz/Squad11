@@ -1,3 +1,4 @@
+import { addMinutes, isAfter } from 'date-fns';
 import knexDB from '../../database/knex';
 
 class filaDAO {
@@ -66,10 +67,17 @@ class filaDAO {
 
   async indexQueue(id_jogo) {
     try {
-      const queue = await knexDB('fila')
-        .where('finalizar', '=', '0')
-        .andWhere('id_jogo', '=', id_jogo);
-
+      let queue = await knexDB('fila')
+        .select('usuario.nome', 'jogo.tempo_medio')
+        .join('usuario', 'usuario.id_usuario', '=', 'fila.id_jogador')
+        .join('jogo', 'jogo.id_jogo', '=', 'fila.id_jogo')
+        .where('fila.finalizar', '=', '0')
+        .andWhere('fila.id_jogo', '=', id_jogo);
+      queue.splice(0, 1);
+      queue = queue.map((x, t) => {
+        x.tempo_medio = 2 * ++t;
+        return x;
+      });
       return queue;
     } catch (error) {
       return error;
@@ -84,6 +92,67 @@ class filaDAO {
         .andWhere('id_jogo', '=', id_jogo)
         .del();
       return 'deletado com sucesso';
+    } catch (error) {
+      return error;
+    }
+  }
+
+  async startDate(id_jogo) {
+    try {
+      let searchPlayersId = await knexDB('fila').where('finalizar', '=', '0');
+
+      searchPlayersId = searchPlayersId.map((x) => {
+        return x.id_jogador;
+      });
+
+      let nPlayers = await knexDB('jogo').where('id_jogo', '=', id_jogo);
+      nPlayers = nPlayers[0].numero_jogadores;
+
+      if (searchPlayersId.length > 2) {
+        const x = searchPlayersId.length - nPlayers;
+
+        searchPlayersId.splice(-x);
+      }
+
+      const res = await knexDB('fila')
+        .update('inicio', new Date())
+        .whereIn('id_jogador', searchPlayersId)
+        .andWhere('finalizar', '=', '0');
+
+      return res;
+    } catch (error) {
+      return error;
+    }
+  }
+
+  async finish(id_jogo) {
+    try {
+      const matchs = await knexDB('fila')
+        .whereNotNull('inicio')
+        .andWhere('id_jogo', id_jogo)
+        .andWhere('finalizar', '=', '0');
+
+      const finishIds = matchs.map((x) => {
+        return x.id_fila;
+      });
+
+      const avarageTime = await knexDB('jogo')
+        .select('*')
+        .where('id_jogo', id_jogo)
+        .first();
+
+      if (
+        isAfter(
+          new Date(),
+          addMinutes(matchs[0].inicio, avarageTime.tempo_medio)
+        )
+      ) {
+        const finishMatch = await knexDB('fila')
+          .update('finalizar', 1)
+          .whereIn('id_fila', finishIds);
+      }
+
+      return finishMatch;
     } catch (error) {
       return error;
     }
