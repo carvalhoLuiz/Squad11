@@ -5,6 +5,7 @@ import Login from './pages/Login/LoginView';
 import { IndexView } from './pages/Index/IndexView';
 import Register from './pages/Register/Register';
 import { HomeView } from './pages/Home/HomeView';
+import { Jogos } from './pages/Jogos/Jogos';
 
 export default function Routes() {
     return (
@@ -14,6 +15,7 @@ export default function Routes() {
                 <Route path="/login" component={Login} />
                 <Route path="/cadastro" component={Register} />
                 <Route path="/home" component={HomeView} />
+                <Route path="/jogos" component={Jogos} />
             </Switch>
         </BrowserRouter>
     );
