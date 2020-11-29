@@ -2,12 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { ButtonStyle1 } from '../buttonStyle1/buttonStyle1';
 
-export const AreaTotal = styled.div`
-    width: 100%;
-    background-color: #f7f7f7;
-    border-radius: 10px;
-    padding: 10px;
-`;
 export const ItemArea = styled.div`
     display: flex;
     justify-content: space-between;
@@ -15,6 +9,7 @@ export const ItemArea = styled.div`
     background-color: #fff;
     border-radius: 10px;
     padding: 24px;
+    margin-bottom: 24px;
 `;
 
 export const FotoItem = styled.div`
@@ -37,7 +32,7 @@ export const NomeItem = styled.div`
         font-family: 'Roboto';
         font-size: 18px;
         font-style: normal;
-        margin-left: 41px;
+        margin-left: 155%;
     }
 `;
 export const TempoItem = styled.div`
@@ -48,7 +43,6 @@ export const TempoItem = styled.div`
         font-family: 'Roboto';
         font-size: 18px;
         font-style: normal;
-        margin-left: 279px;
     }
 `;
 export const PessoasItem = styled.div`
@@ -59,25 +53,29 @@ export const PessoasItem = styled.div`
         font-family: 'Roboto';
         font-size: 18px;
         font-style: normal;
-        margin-left: 214px;
     }
 `;
 export const ButtonItem = styled.div`
     display: flex;
     align-items: center;
-    margin-left: 187px;
+`;
+export const UserArea = styled.div`
+    display: flex;
+    flex-direction: row;
 `;
 
 export const ListaComponentizada = (props) => {
     return (
-        <AreaTotal>
+        <>
             <ItemArea>
-                <FotoItem>
-                    <img src={props.photo} alt="user_photo" />
-                </FotoItem>
-                <NomeItem>
-                    <p>{props.nome}</p>
-                </NomeItem>
+                <UserArea>
+                    <FotoItem>
+                        <img src={props.photo} alt="user_photo" />
+                    </FotoItem>
+                    <NomeItem>
+                        <p>{props.nome}</p>
+                    </NomeItem>
+                </UserArea>
                 <TempoItem>
                     <p>{props.tempo}</p>
                 </TempoItem>
@@ -88,6 +86,6 @@ export const ListaComponentizada = (props) => {
                     <ButtonStyle1 primary active texto="Sair da Fila" />
                 </ButtonItem>
             </ItemArea>
-        </AreaTotal>
+        </>
     );
 };
