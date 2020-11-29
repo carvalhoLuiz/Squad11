@@ -67,25 +67,25 @@ export const Jogos = () => {
                 nome="Teste"
                 fila="Teste"
                 tempo="Teste"
-            />{' '}
+            />
             <ListaComponentizada
                 photo={UserPhoto}
                 nome="Teste"
                 fila="Teste"
                 tempo="Teste"
-            />{' '}
+            />
             <ListaComponentizada
                 photo={UserPhoto}
                 nome="Teste"
                 fila="Teste"
                 tempo="Teste"
-            />{' '}
+            />
             <ListaComponentizada
                 photo={UserPhoto}
                 nome="Teste"
                 fila="Teste"
                 tempo="Teste"
-            />{' '}
+            />
             <ListaComponentizada
                 photo={UserPhoto}
                 nome="Teste"
