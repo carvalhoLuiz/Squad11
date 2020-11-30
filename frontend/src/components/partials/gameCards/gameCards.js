@@ -105,7 +105,7 @@ export const DescArea = styled.div`
 
 export const BtnArea = styled.div`
     display: flex;
-    margin-top: 85px;
+    margin-top: 20px;
     width: 45%;
     align-self: flex-start;
 
@@ -140,8 +140,20 @@ export const GameCard = (props) => {
                     <BtnArea>
                         <ButtonStyle3
                             className="botao"
+                            style={{ marginTop: '0px' }}
                             primary
+                            func={props.func1}
                             texto="Entrar na Fila"
+                            texto2=">"
+                        />
+                    </BtnArea>
+                    <BtnArea>
+                        <ButtonStyle3
+                            style={{ marginTop: '0 px' }}
+                            className="botao"
+                            primary={false}
+                            func={props.func2}
+                            texto="Visualizar a fila"
                             texto2=">"
                         />
                     </BtnArea>

@@ -21,6 +21,7 @@ module.exports = {
 
     rules: {
         'jsx-a11y/label-has-associated-control': 'off',
+        'no-param-reassign': 'off',
         'no-unused-vars': 'off',
         'react/prefer-stateless-function': 'off',
         'react/prop-types': 'off',

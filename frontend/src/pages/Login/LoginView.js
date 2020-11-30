@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Input from '../../components/Input/Input';
 import { Container, FormContainer } from './StyledLoginView';
 import Logo from '../../assets/icons/Logo.svg';
@@ -10,6 +10,7 @@ import { ButtonStyle1 } from '../../components/partials/buttonStyle1/buttonStyle
 export default function Login() {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
+    const history = useHistory();
 
     const handleEmail = (a) => {
         setEmail(a.target.value);
@@ -29,6 +30,7 @@ export default function Login() {
             const { nome, token } = response.data;
             localStorage.setItem('nome', nome);
             localStorage.setItem('token', token);
+            history.push('/home');
         });
     };
     return (

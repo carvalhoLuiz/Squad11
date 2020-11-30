@@ -17,6 +17,7 @@ module.exports = {
     'linebreak-style': 0,
     'class-methods-use-this': 'off',
     'no-param-reassign': 'off',
+    'no-plusplus': 'off',
     // eslint-disable-next-line quote-props
     'camelcase': 'off',
     // eslint-disable-next-line quote-props
