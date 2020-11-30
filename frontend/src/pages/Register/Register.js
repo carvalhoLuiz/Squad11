@@ -1,4 +1,6 @@
 import React from 'react';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import { Link } from 'react-router-dom';
 import Input from '../../components/Input/Input';
 import { ButtonStyle1 } from '../../components/partials/buttonStyle1/buttonStyle1';
 import Logo from '../../assets/icons/Logo.svg';
@@ -11,7 +13,24 @@ export default function Register() {
                 width: '100vw',
             }}
         >
-            <img src={Logo} alt="teste" style={{ margin: '40px 0 0 40px' }} />
+            <div style={{ margin: '40px 0 0 40px' }}>
+                <img src={Logo} alt="teste" />
+                <Link to="/" style={{ textDecoration: 'none', color: 'black' }}>
+                    <div
+                        style={{
+                            display: 'flex',
+                            flexDirection: 'row',
+                            width: '10%',
+                            cursor: 'pointer',
+                        }}
+                    >
+                        <p>
+                            <ArrowBackIosIcon />
+                        </p>
+                        <p>CADASTRO</p>
+                    </div>
+                </Link>
+            </div>
             <div
                 style={{
                     height: '80%',

@@ -31,7 +31,13 @@ const Style = styled.div`
 export const ButtonStyle1 = (props) => {
     return (
         <>
-            <Style primary={props.primary} active={props.active}>
+            <Style
+                primary={props.primary}
+                active={props.active}
+                onClick={() => {
+                    if (props.func) props.func();
+                }}
+            >
                 <h6>{props.texto}</h6>
             </Style>
         </>

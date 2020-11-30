@@ -23,17 +23,17 @@ class SessionController {
       if (!(await bcrypt.compare(senha, lineUser.mensagem.senha))) {
         return res.status(400).json({ mensagem: `Senha inválida` });
       }
+
       const { id_usuario, nome } = lineUser.mensagem;
+
       return res.status(200).json({
-        user: {
-          nome,
-        },
+        nome,
         token: JWT.sign({ email, id_usuario }, authConfig.secret, {
           expiresIn: authConfig.expiresIn,
         }),
       });
     } catch (error) {
-      return res.status(400).json({ Error: error });
+      return res.status(401).json({ Error: error });
     }
   }
 }
