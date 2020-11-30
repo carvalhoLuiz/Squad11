@@ -1,9 +1,11 @@
 /* eslint-disable no-console */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { useLocation } from 'react-router-dom';
 import { ListaComponentizada } from '../../components/partials/Lista/ListaComponent';
 import { Template } from '../../components/partials/template';
 import UserPhoto from '../../assets/media/Person.jpg';
+import api from '../../services/api';
 import { Header } from '../../components/partials/header/header';
 
 export const AreaTotal = styled.div`
@@ -23,8 +25,6 @@ export const LegendaArea = styled.div`
         font-family: 'Roboto';
         color: #2f2e2e;
         font-size: 18px;
-        margin-bottom: 10px;
-        margin-top: 30px;
     }
 `;
 
@@ -36,6 +36,17 @@ export const LegendaTempo = styled.div`
 `;
 
 export const Jogos = () => {
+    const [lista, setLista] = useState([]);
+    const { state } = useLocation();
+    const { data } = state;
+    const buscar = () => {
+        api.get('fila', { params: { id: data.id } }).then((response) => {
+            setLista(response.data);
+        });
+    };
+    useEffect(() => {
+        buscar();
+    }, []);
     return (
         <Template>
             <Header />
@@ -52,66 +63,17 @@ export const Jogos = () => {
                 </LegendaPessoas>
             </LegendaArea>
             <AreaTotal>
-                <ListaComponentizada
-                    photo={UserPhoto}
-                    nome="Você"
-                    fila="Teste"
-                    tempo="Teste"
-                />
-                <ListaComponentizada
-                    photo={UserPhoto}
-                    nome="Teste"
-                    fila="Teste"
-                    tempo="Teste"
-                />
-                <ListaComponentizada
-                    photo={UserPhoto}
-                    nome="Teste"
-                    fila="Teste"
-                    tempo="Teste"
-                />
-                <ListaComponentizada
-                    photo={UserPhoto}
-                    nome="Teste"
-                    fila="Teste"
-                    tempo="Teste"
-                />
-                <ListaComponentizada
-                    photo={UserPhoto}
-                    nome="Teste"
-                    fila="Teste"
-                    tempo="Teste"
-                />
-                <ListaComponentizada
-                    photo={UserPhoto}
-                    nome="Teste"
-                    fila="Teste"
-                    tempo="Teste"
-                />
-                <ListaComponentizada
-                    photo={UserPhoto}
-                    nome="Teste"
-                    fila="Teste"
-                    tempo="Teste"
-                />
-                <ListaComponentizada
-                    photo={UserPhoto}
-                    nome="Teste"
-                    fila="Teste"
-                    tempo="Teste"
-                />
-                <ListaComponentizada
-                    photo={UserPhoto}
-                    nome="Teste"
-                    fila="Teste"
-                    tempo="Teste"
-                />
-                <ListaComponentizada
-                    photo={UserPhoto}
-                    nome="Teste"
-                    fila="Teste"
-                    tempo="Teste"
-                />
+                {lista &&
+                    lista.map((response, ind) => {
+                        return (
+                            <ListaComponentizada
+                                photo={UserPhoto}
+                                nome={response.nome}
+                                fila={ind + 1}
+                                tempo={response.tempo_medio}
+                            />
+                        );
+                    })}
             </AreaTotal>
         </Template>
     );

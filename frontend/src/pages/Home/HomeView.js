@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Template } from '../../components/partials/template';
 import { GameCard } from '../../components/partials/gameCards/gameCards';
 import api from '../../services/api';
 import { Container } from './StyledHomeView';
 import { Header } from '../../components/partials/header/header';
 import Mesa from '../../assets/media/Mesa.png';
+import Padrao from '../../assets/media/Control.png';
 import Play from '../../assets/media/Play.png';
 import Uno from '../../assets/media/Uno2.png';
 import Zelda from '../../assets/media/Zelda.png';
@@ -12,7 +14,7 @@ import Zelda from '../../assets/media/Zelda.png';
 export const HomeView = () => {
     const [jogo, setJogo] = useState([]);
     const [fila, setFila] = useState([]);
-
+    const history = useHistory();
     const buscar = () => {
         api.get('/filaz').then((response) => {
             setFila(response.data);
@@ -34,14 +36,18 @@ export const HomeView = () => {
                         <Container>
                             <GameCard
                                 name={response.nome_jogo}
-                                image={Mesa}
+                                image={Padrao}
                                 fila={`${fila.player[ind]} Pessoas na sua frente`}
                                 duracao={`${fila.time[ind]} minutos de espera`}
+                                func2={() => {
+                                    history.push('/jogos', {
+                                        data: { id: response.id_jogo },
+                                    });
+                                }}
                             />
                         </Container>
                     );
                 })}
-
         </Template>
     );
 };
