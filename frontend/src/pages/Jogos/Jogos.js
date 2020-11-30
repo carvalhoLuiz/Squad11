@@ -65,6 +65,7 @@ export const Jogos = () => {
             <AreaTotal>
                 {lista &&
                     lista.map((response, ind) => {
+                        console.log(response.tempo_medio);
                         return (
                             <ListaComponentizada
                                 photo={UserPhoto}
