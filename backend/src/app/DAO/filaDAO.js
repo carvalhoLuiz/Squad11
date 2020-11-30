@@ -1,4 +1,5 @@
 import { addMinutes, isAfter } from 'date-fns';
+
 import knexDB from '../../database/knex';
 
 class filaDAO {
@@ -68,16 +69,90 @@ class filaDAO {
   async indexQueue(id_jogo) {
     try {
       let queue = await knexDB('fila')
-        .select('usuario.nome', 'jogo.tempo_medio')
+        .select(
+          'jogo.id_jogo',
+          'usuario.nome',
+          'jogo.tempo_medio',
+          'fila.inicio'
+        )
         .join('usuario', 'usuario.id_usuario', '=', 'fila.id_jogador')
         .join('jogo', 'jogo.id_jogo', '=', 'fila.id_jogo')
         .where('fila.finalizar', '=', '0')
         .andWhere('fila.id_jogo', '=', id_jogo);
-      queue.splice(0, 1);
+
+      queue.map((x) => {
+        return !x.inicio ? x.inicio : null;
+      });
+
       queue = queue.map((x, t) => {
-        x.tempo_medio = 2 * ++t;
+        if (t > 0) {
+          x.tempo_medio *= ++t;
+        }
         return x;
       });
+      return queue;
+    } catch (error) {
+      return error;
+    }
+  }
+
+  async time() {
+    try {
+      let queue = await knexDB('fila')
+        .select(
+          'jogo.id_jogo',
+          'usuario.nome',
+          'jogo.tempo_medio',
+          'fila.inicio'
+        )
+        .join('usuario', 'usuario.id_usuario', '=', 'fila.id_jogador')
+        .join('jogo', 'jogo.id_jogo', '=', 'fila.id_jogo')
+        .where('fila.finalizar', '=', '0')
+        .orderBy('id_jogo');
+      const ids = [];
+      const nPlayers = [];
+      const time2 = [];
+      let f = 0;
+
+      let current = queue[0].id_jogo;
+      for (let x = 0; x <= queue.length - 1; x++) {
+        if (x < queue.length - 1) {
+          if (queue[x].id_jogo !== queue[x + 1].id_jogo) {
+            if (ids.length < 1) {
+              ids.push(queue[x].id_jogo);
+              time2.push(queue[x].tempo_medio);
+            }
+            time2.push(queue[x + 1].tempo_medio);
+            ids.push(queue[x + 1].id_jogo);
+          }
+        }
+        if (queue[x].id_jogo !== current) {
+          nPlayers.push(f);
+
+          f = 0;
+          current = queue[x].id_jogo;
+        }
+        if (
+          current === queue[queue.length - 1].id_jogo &&
+          x === queue.length - 1
+        ) {
+          nPlayers.push(f + 1);
+          if (!ids[0]) {
+            ids.push(queue[x].id_jogo);
+            ids.push(queue[x].id_jogo);
+          }
+        }
+        f++;
+      }
+
+      const time = nPlayers.map((x, ind) => {
+        return x * time2[ind];
+      });
+      queue = {
+        id: ids,
+        player: nPlayers,
+        time,
+      };
       return queue;
     } catch (error) {
       return error;
@@ -99,25 +174,32 @@ class filaDAO {
 
   async startDate(id_jogo) {
     try {
+      let res;
       let searchPlayersId = await knexDB('fila').where('finalizar', '=', '0');
 
+      const playerInGame = searchPlayersId.filter((player) => {
+        return player.inicio ? player.inicio : null;
+      });
       searchPlayersId = searchPlayersId.map((x) => {
         return x.id_jogador;
       });
+      let nPlayers = await knexDB('jogo')
+        .where('id_jogo', '=', id_jogo)
+        .first();
 
-      let nPlayers = await knexDB('jogo').where('id_jogo', '=', id_jogo);
-      nPlayers = nPlayers[0].numero_jogadores;
+      nPlayers = nPlayers.numero_jogadores;
 
-      if (searchPlayersId.length > 2) {
+      if (searchPlayersId.length > nPlayers) {
         const x = searchPlayersId.length - nPlayers;
 
         searchPlayersId.splice(-x);
       }
-
-      const res = await knexDB('fila')
-        .update('inicio', new Date())
-        .whereIn('id_jogador', searchPlayersId)
-        .andWhere('finalizar', '=', '0');
+      if (!playerInGame[0]) {
+        res = await knexDB('fila')
+          .update('inicio', new Date())
+          .whereIn('id_jogador', searchPlayersId)
+          .andWhere('finalizar', '=', '0');
+      }
 
       return res;
     } catch (error) {
@@ -127,6 +209,8 @@ class filaDAO {
 
   async finish(id_jogo) {
     try {
+      let finishMatch;
+
       const matchs = await knexDB('fila')
         .whereNotNull('inicio')
         .andWhere('id_jogo', id_jogo)
@@ -147,7 +231,7 @@ class filaDAO {
           addMinutes(matchs[0].inicio, avarageTime.tempo_medio)
         )
       ) {
-        const finishMatch = await knexDB('fila')
+        finishMatch = await knexDB('fila')
           .update('finalizar', 1)
           .whereIn('id_fila', finishIds);
       }
