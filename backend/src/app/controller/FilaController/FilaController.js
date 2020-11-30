@@ -70,6 +70,7 @@ class FilaController {
 
   async startDate(req, res) {
     const id_jogo = req.query.id;
+
     try {
       const startDate = await fila.startDate(id_jogo);
 
