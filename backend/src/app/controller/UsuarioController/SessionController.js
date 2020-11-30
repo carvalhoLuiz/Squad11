@@ -25,9 +25,10 @@ class SessionController {
       }
 
       const { id_usuario, nome } = lineUser.mensagem;
-
+      const emai = lineUser.mensagem.email;
       return res.status(200).json({
         nome,
+        emai,
         token: JWT.sign({ email, id_usuario }, authConfig.secret, {
           expiresIn: authConfig.expiresIn,
         }),

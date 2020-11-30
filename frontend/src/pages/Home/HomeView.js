@@ -15,6 +15,7 @@ export const HomeView = () => {
     const [jogo, setJogo] = useState([]);
     const [fila, setFila] = useState([]);
     const history = useHistory();
+
     const buscar = () => {
         api.get('/filaz').then((response) => {
             setFila(response.data);
@@ -32,6 +33,12 @@ export const HomeView = () => {
             {jogo &&
                 fila &&
                 jogo.map((response, ind) => {
+                    const data = { id: response.id_jogo };
+                    const atualizaFila = () => {
+                        api.put('/filas', data);
+                        api.put('/fila', data);
+                    };
+                    setInterval(atualizaFila(), 180000);
                     return (
                         <Container>
                             <GameCard
@@ -39,6 +46,13 @@ export const HomeView = () => {
                                 image={Padrao}
                                 fila={`${fila.player[ind]} Pessoas na sua frente`}
                                 duracao={`${fila.time[ind]} minutos de espera`}
+                                func1={() => {
+                                    api.post('/fila', data).then(() => {
+                                        history.push('/jogos', {
+                                            data: { id: response.id_jogo },
+                                        });
+                                    });
+                                }}
                                 func2={() => {
                                     history.push('/jogos', {
                                         data: { id: response.id_jogo },
