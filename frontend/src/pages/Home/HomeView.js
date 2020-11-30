@@ -39,16 +39,17 @@ export const HomeView = () => {
                         api.put('/fila', null, { params: { id: data.id } });
                     };
                     setInterval(atualizaFila(), 180000);
+
                     return (
                         <Container>
                             <GameCard
                                 name={response.nome_jogo}
                                 image={Padrao}
                                 fila={`${
-                                    fila.player[ind] ? fila.player[ind] : '0'
+                                    fila.id ? fila.player[ind] : '0'
                                 } Pessoas na sua frente`}
                                 duracao={`${
-                                    fila.time[ind] ? fila.time[ind] : '0'
+                                    fila.id ? fila.time[ind] : '0'
                                 } minutos de espera`}
                                 func1={() => {
                                     api.post('/fila', data).then(() => {
