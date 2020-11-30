@@ -1,6 +1,7 @@
 import React from 'react';
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import { Link } from 'react-router-dom';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+
 import Input from '../../components/Input/Input';
 import { ButtonStyle1 } from '../../components/partials/buttonStyle1/buttonStyle1';
 import Logo from '../../assets/icons/Logo.svg';
