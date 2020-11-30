@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { ListaComponentizada } from '../../components/partials/Lista/ListaComponent';
 import { Template } from '../../components/partials/template';
 import UserPhoto from '../../assets/media/Person.jpg';
+import { Header } from '../../components/partials/header/header';
 
 export const AreaTotal = styled.div`
     width: 100%;
@@ -22,6 +23,8 @@ export const LegendaArea = styled.div`
         font-family: 'Roboto';
         color: #2f2e2e;
         font-size: 18px;
+        margin-bottom: 10px;
+        margin-top: 30px;
     }
 `;
 
@@ -35,6 +38,7 @@ export const LegendaTempo = styled.div`
 export const Jogos = () => {
     return (
         <Template>
+            <Header />
             <LegendaArea>
                 <LegendaTempo>
                     <strong>

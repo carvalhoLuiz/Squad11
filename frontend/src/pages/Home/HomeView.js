@@ -3,6 +3,7 @@ import { Template } from '../../components/partials/template';
 import { GameCard } from '../../components/partials/gameCards/gameCards';
 import api from '../../services/api';
 import { Container } from './StyledHomeView';
+import { Header } from '../../components/partials/header/header';
 import Mesa from '../../assets/media/Mesa.png';
 import Play from '../../assets/media/Play.png';
 import Uno from '../../assets/media/Uno2.png';
@@ -24,6 +25,8 @@ export const HomeView = () => {
     useEffect(() => buscar(), []);
     return (
         <Template>
+            <Header />
+
             {jogo &&
                 fila &&
                 jogo.map((response, ind) => {
@@ -38,6 +41,7 @@ export const HomeView = () => {
                         </Container>
                     );
                 })}
+
         </Template>
     );
 };
