@@ -20,6 +20,7 @@ routes.get('/filaLivre', FilaController.indexAvailable);
 routes.delete('/fila', FilaController.delete);
 routes.put('/filas', FilaController.startDate);
 routes.put('/fila', FilaController.finishMatch);
+routes.get('/filaz', FilaController.time);
 
 routes.post('/jogo', JogoController.store);
 routes.put('/jogo', JogoController.update);

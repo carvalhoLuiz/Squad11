@@ -46,6 +46,16 @@ class FilaController {
     }
   }
 
+  async time(req, res) {
+    try {
+      const queue = await fila.time();
+
+      return res.status(200).json(queue);
+    } catch (error) {
+      return res.status(400).json(error);
+    }
+  }
+
   async delete(req, res) {
     const id_jogo = req.query.id;
     const id_jogador = req.userId;
